@@ -20,16 +20,14 @@ export const RenderMain = () => {
     (state: RootState) => state.itens.errorMessage
   );
 
-
   const addItemToCart = (id: number): any => {
-    
     const item = cartItens.find((item: iCartItens) => item.id === id);
     if (item) {
       return dispatch(increaseCartItemQuantity(id));
     } else {
       const otherItem = itens.find((item: any) => item.id === id);
       if (otherItem) {
-        const newItem = {...otherItem, quantity: 1}
+        const newItem = { ...otherItem, quantity: 1 };
         return dispatch(addCartItens(newItem));
       }
     }
